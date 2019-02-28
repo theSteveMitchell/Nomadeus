@@ -1,18 +1,18 @@
 #/bin/bash
 #To run this, type:
-# curl -s 'https://raw.githubusercontent.com/theSteveMitchell/Nomadeus/master/Install | sh
+# curl -s 'https://raw.githubusercontent.com/theSteveMitchell/Nomadeus/master/Install' | sh
 
 # Xcode of course
 xcode-select --install
+
+# Install Homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 #Ruby/Rails
 curl -sSL https://get.rvm.io | bash -s stable --rails
 
 # Install free apps
 curl -s 'https://macapps.link/en/firefox-alfred-sublime-docker-postman-spotify-vlc-slack' | sh
-
-# Install Homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Install a bunch of homebrew apps
 
