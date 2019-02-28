@@ -1,0 +1,23 @@
+#/bin/bash
+
+# Xcode of course
+xcode-select --install
+
+# Install free apps
+curl -s 'https://macapps.link/en/firefox-alfred-sublime-docker-postman-spotify-vlc-slack' | sh
+
+# Install Homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Install a bunch of homebrew apps
+
+# Mac App Store CLI
+brew install mas
+
+#App Store purchases
+mas luck textWrangler
+mas lucky Hyperdock
+
+# My personal Heartfiles, which will eventually contain e.g. terminal prefs, Sublime user settings, and custom bash_profile/bashrc
+curl https://raw.githubusercontent.com/theSteveMitchell/.heartfiles/master/.bash_profile > ~/.bash_profile
+
