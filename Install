@@ -1,7 +1,12 @@
 #/bin/bash
+#To run this, type:
+# curl -s 'https://raw.githubusercontent.com/theSteveMitchell/Nomadeus/master/Install | sh
 
 # Xcode of course
 xcode-select --install
+
+#Ruby/Rails
+curl -sSL https://get.rvm.io | bash -s stable --rails
 
 # Install free apps
 curl -s 'https://macapps.link/en/firefox-alfred-sublime-docker-postman-spotify-vlc-slack' | sh
