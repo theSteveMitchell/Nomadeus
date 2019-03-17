@@ -20,9 +20,68 @@ curl -s 'https://macapps.link/en/firefox-alfred-sublime-docker-postman-spotify-v
 brew install mas
 
 #App Store purchases
-mas luck textWrangler
+mas lucky textWrangler
 mas lucky Hyperdock
 
 # My personal Heartfiles, which will eventually contain e.g. terminal prefs, Sublime user settings, and custom bash_profile/bashrc
 curl https://raw.githubusercontent.com/theSteveMitchell/.heartfiles/master/.bash_profile > ~/.bash_profile
 
+#show system files by default always
+defaults write com.apple.finder AppleShowAllFiles TRUE
+killall Finder
+
+#TODO show hard disks in the Finder Sidebar (no automated way to do this?)
+
+#set mousepad scroll direction to "normal" (requires logout/login to take effect)
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool FALSE && killall cfprefsd'
+
+#modify key repeat to sensible settings
+defaults write -g InitialKeyRepeat -int 25 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
+
+# Development area
+mkdir -p ~/Code && cd ~/Code
+#todo cd Code and clone Github repos
+
+#remove most of the default Mac apps from Dock
+mkdir -p ~/Code/trash && cd trash
+curl -s 'https://raw.githubusercontent.com/jcarm010/osx-dock-remover/master/dock-icon-remove.py' > dock-icon-remove.py 
+
+#TODO Send a PR to jcarm010/osx-dock-remover to support multiple removes before reloading (3 second delay after each removal is painful)
+python dock-icon-remove.py -r "/Applications/Siri" \
+python dock-icon-remove.py -r "/Applications/Launchpad"
+python dock-icon-remove.py -r "/Applications/Safari"
+python dock-icon-remove.py -r "/Applications/Mail"
+python dock-icon-remove.py -r "/Applications/Contacts"
+python dock-icon-remove.py -r "/Applications/Reminders"
+python dock-icon-remove.py -r "/Applications/Maps"
+python dock-icon-remove.py -r "/Applications/FaceTime"
+python dock-icon-remove.py -r "/Applications/Pages"
+python dock-icon-remove.py -r "/Applications/Numbers"
+python dock-icon-remove.py -r "/Applications/Keynote"
+python dock-icon-remove.py -r "/Applications/News"
+python dock-icon-remove.py -r "/Applications/iTunes"
+python dock-icon-remove.py -r "/Applications/App Store"
+python dock-icon-remove.py -r "/Applications/System Preferences"
+
+#TODO set Alfred hotkey to cmd+cmd
+
+#Lastly, get cutoms packages that I can't get through any other method.
+#TODO the only case I have so far is Zoom, and I can't seem to download the .pkg file from terminal yet
+#curl -s "https://zoom.us/client/latest/Zoom.pkg"
+#for f in *.pkg ; 
+#    do sudo installer -verbose -pkg "$f" -target /
+#done
+
+cd ~/Code
+if [ ! -f ~/.ssh/id_rsa ]
+  then
+    ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+    ssh-add -K ~/.ssh/id_rsa
+fi
+pbcopy < ~/.ssh/id_rsa.pub
+
+open -a Firefox "https://zoom.us/client/latest/Zoom.pkg"
+open -a Firefox "https://github.com"
+
+cd ~/
