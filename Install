@@ -2,6 +2,7 @@
 #To run this, type:
 # ssh-keygen # and go through prompts
 # xcode-select --install
+# sign in to app store
 
 # curl -s 'https://raw.githubusercontent.com/theSteveMitchell/Nomadeus/master/Install' | sh
 
