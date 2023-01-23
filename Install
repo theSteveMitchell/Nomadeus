@@ -5,30 +5,30 @@
 # Create RSA key with defaults, do NOT overwrite.
 ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y >/dev/null 2>&1
 
-# My personal Heartfiles, which will eventually contain e.g. terminal prefs, Sublime user settings, and custom bash_profile/bashrc
+# My personal Heartfiles
 curl https://raw.githubusercontent.com/theSteveMitchell/.heartfiles/master/.zshrc > ~/.zshrc
 
 # install Xcode developer tools, wait for completion
+echo "Awaiting Xcode install"
 check=$((xcode-\select --install) 2>&1)
 echo $check
 str="xcode-select: note: install requested for command line developer tools"
 while [[ "$check" == "$str" ]];
 do
-  sleep 300
-  checking xCode install
+  sleep 10
+  echo "."
 done
 
-# sign in to app store
-# Xcode of course
-
 # Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 #Ruby/Rails
 curl -sSL https://get.rvm.io | bash -s stable --rails
 
 # Install free apps
 curl -s 'https://api.macapps.link/en/firefox-sublime-docker-postman-slack' | sh
+
+open -a /Applications/Firefox.app  "https://github.com/thestevemitchell/nomadeus"
 
 # Install a bunch of homebrew apps
 
