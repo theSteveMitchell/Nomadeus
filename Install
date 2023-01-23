@@ -11,7 +11,8 @@ echo $check
 str="xcode-select: note: install requested for command line developer tools"
 while [[ "$check" == "$str" ]];
 do
-  read -p "Press Enter once XCode Install is completed" </dev/tty  
+  sleep 300
+  checking xCode install
 done
 
 # sign in to app store
