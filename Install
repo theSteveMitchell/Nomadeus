@@ -5,6 +5,9 @@
 # Create RSA key with defaults, do NOT overwrite.
 ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y >/dev/null 2>&1
 
+# My personal Heartfiles, which will eventually contain e.g. terminal prefs, Sublime user settings, and custom bash_profile/bashrc
+curl https://raw.githubusercontent.com/theSteveMitchell/.heartfiles/master/.zshrc > ~/.zshrc
+
 # install Xcode developer tools, wait for completion
 check=$((xcode-\select --install) 2>&1)
 echo $check
@@ -28,16 +31,6 @@ curl -sSL https://get.rvm.io | bash -s stable --rails
 curl -s 'https://api.macapps.link/en/firefox-sublime-docker-postman-slack' | sh
 
 # Install a bunch of homebrew apps
-
-# Mac App Store CLI
-brew install mas
-
-#App Store purchases
-mas lucky textWrangler
-mas lucky Hyperdock
-
-# My personal Heartfiles, which will eventually contain e.g. terminal prefs, Sublime user settings, and custom bash_profile/bashrc
-curl https://raw.githubusercontent.com/theSteveMitchell/.heartfiles/master/.bash_profile > ~/.bash_profile
 
 #show system files by default always
 defaults write com.apple.finder AppleShowAllFiles TRUE
