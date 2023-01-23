@@ -25,7 +25,7 @@ done
 curl -sSL https://get.rvm.io | bash -s stable --rails
 
 # Install free apps
-curl -s 'https://api.macapps.link/en/firefox-sublime-docker-postman-spotify-vlc-slack' | sh
+curl -s 'https://api.macapps.link/en/firefox-sublime-docker-postman-slack' | sh
 
 # Install a bunch of homebrew apps
 
