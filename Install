@@ -1,6 +1,6 @@
 #/bin/bash
 # To run this, type:
-# curl -s 'tinyurl.com/nomadeus' | sh
+# curl -L 'tinyurl.com/nomadeus' | sh
 
 # Create RSA key with defaults, do NOT overwrite.
 ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y >/dev/null 2>&1
