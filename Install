@@ -1,22 +1,31 @@
 #/bin/bash
-#To run this, type:
-# ssh-keygen # and go through prompts
-# xcode-select --install
+# To run this, type:
+# curl -s 'tinyurl.com/nomadeus' | sh
+
+# Create RSA key with defaults, do NOT overwrite.
+ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y >/dev/null 2>&1
+
+# install Xcode developer tools, wait for completion
+check=$((xcode-\select --install) 2>&1)
+echo $check
+str="xcode-select: note: install requested for command line developer tools"
+while [[ "$check" == "$str" ]];
+do
+  osascript -e 'tell app "System Events" to display dialog "xcode command-line tools missing." buttons "OK" default button 1 with title "xcode command-line tools"'
+  exit;  
+done
+
 # sign in to app store
-
-# curl -s 'https://raw.githubusercontent.com/theSteveMitchell/Nomadeus/master/Install' | sh
-
 # Xcode of course
-#xcode-select --install
 
 # Install Homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 #Ruby/Rails
 curl -sSL https://get.rvm.io | bash -s stable --rails
 
 # Install free apps
-curl -s 'https://api.macapps.link/en/firefox-alfred-sublime-docker-postman-spotify-vlc-slack' | sh
+curl -s 'https://api.macapps.link/en/firefox-sublime-docker-postman-spotify-vlc-slack' | sh
 
 # Install a bunch of homebrew apps
 
