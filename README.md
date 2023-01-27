@@ -2,8 +2,8 @@
 A symphony of new Mac setup (pronounced: no-mah-DAY-uhs)
 
 # Usage
-1. <Buy new Mac, run Apple setup wizard>
-2. "Hey Siri, Setup my new Mac."
+1. Buy new Mac, run setup wizard
+2. In Terminal: `curl -L 'tinyurl.com/nomadeus' | sh`
 3. `cd ~/Code/recentProject && bin/setup/`
 
 # Motivation
